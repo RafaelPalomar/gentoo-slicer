@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+<repo priority="50" status="unofficial">
+	<name>gentoo-slicer</name>
+	<description>3D slicer gentoo repository</description>
+	<owner>
+		<email>rafael.palomar@rr-research.no</email>
+		<name>Oslo University Hospital</name>
+	</owner>
+	<source type="git">git://github.com/RafaelPalomar/gentoo-slicer.git</source>
+</repo>
+</repositories>
