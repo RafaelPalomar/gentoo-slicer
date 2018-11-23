@@ -1,0 +1,68 @@
+From 2c4dcec81c8891ef8a70cccd42479f2526161755 Mon Sep 17 00:00:00 2001
+From: = <=>
+Date: Fri, 23 Nov 2018 13:55:38 +0100
+Subject: [PATCH] Remove dependence of ctkAppLauncher from
+ qSlicerCoreApplication
+
+---
+ Base/QTCore/qSlicerCoreApplication.cxx | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/Base/QTCore/qSlicerCoreApplication.cxx b/Base/QTCore/qSlicerCoreApplication.cxx
+index f2db1ee48..f07dd5664 100644
+--- a/Base/QTCore/qSlicerCoreApplication.cxx
++++ b/Base/QTCore/qSlicerCoreApplication.cxx
+@@ -98,8 +98,10 @@
+ #include <vtkMRMLScene.h>
+ 
+ // CTKLauncherLib includes
++#ifdef Slicer_USE_CTKAPPLAUNCHER
+ #include <ctkAppLauncherEnvironment.h>
+ #include <ctkAppLauncherSettings.h>
++#endif
+ 
+ // VTK includes
+ #include <vtkNew.h>
+@@ -221,6 +223,7 @@ void qSlicerCoreApplicationPrivate::init()
+ 
+   // Save the environment if no launcher is used (this is for example the case
+   // on MacOSX when slicer is started from an install tree)
++#ifdef Slicer_USE_CTKAPPLAUNCHER
+   if (ctkAppLauncherEnvironment::currentLevel() == 0)
+     {
+     QProcessEnvironment updatedEnv;
+@@ -231,9 +234,9 @@ void qSlicerCoreApplicationPrivate::init()
+       q->setEnvironmentVariable(varname, updatedEnv.value(varname));
+       }
+     }
+-
++#endif
+   q->setEnvironmentVariable("SLICER_HOME", this->SlicerHome);
+-
++#ifdef Slicer_USE_CTKAPPLAUNCHER
+   ctkAppLauncherSettings appLauncherSettings;
+   appLauncherSettings.setLauncherName(q->applicationName());
+   appLauncherSettings.setLauncherDir(this->SlicerHome);
+@@ -266,6 +269,7 @@ void qSlicerCoreApplicationPrivate::init()
+       q->setEnvironmentVariable(key, value);
+       }
+     }
++#endif
+ 
+ #ifdef Slicer_USE_PYTHONQT_WITH_OPENSSL
+   if (!QSslSocket::supportsSsl())
+@@ -702,7 +706,11 @@ bool qSlicerCoreApplication::testAttribute(qSlicerCoreApplication::ApplicationAt
+ //-----------------------------------------------------------------------------
+ QProcessEnvironment qSlicerCoreApplication::startupEnvironment() const
+ {
++#ifdef Slicer_USE_CTKAPPLAUNCHER
+   return ctkAppLauncherEnvironment::environment(0);
++#endif
++  return QProcessEnvironment();
++
+ }
+ 
+ //-----------------------------------------------------------------------------
+-- 
+2.18.1
+

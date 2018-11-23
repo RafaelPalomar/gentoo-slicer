@@ -1,0 +1,27 @@
+From 36727fc36e8d32687a0a89c121dc11519242214a Mon Sep 17 00:00:00 2001
+From: = <=>
+Date: Fri, 23 Nov 2018 12:55:01 +0100
+Subject: [PATCH] Fixing ITK dependences for vtkTeem
+
+---
+ Libs/vtkTeem/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Libs/vtkTeem/CMakeLists.txt b/Libs/vtkTeem/CMakeLists.txt
+index 83e4ea32c..1af99cf72 100644
+--- a/Libs/vtkTeem/CMakeLists.txt
++++ b/Libs/vtkTeem/CMakeLists.txt
+@@ -18,8 +18,8 @@ endif()
+ #
+ # VTK
+ #
+-#find_package(VTK REQUIRED)
+-#include(${VTK_USE_FILE})
++find_package(ITK REQUIRED)
++include(${ITK_USE_FILE})
+ 
+ #
+ # Teem
+-- 
+2.18.1
+

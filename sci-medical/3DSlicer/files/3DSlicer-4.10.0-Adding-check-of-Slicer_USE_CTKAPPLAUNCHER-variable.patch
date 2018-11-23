@@ -1,0 +1,27 @@
+From 35a6711daf50166d7a9be23ea894a3fdcd2618b1 Mon Sep 17 00:00:00 2001
+From: = <=>
+Date: Fri, 23 Nov 2018 12:28:35 +0100
+Subject: [PATCH] Adding check of Slicer_USE_CTKAPPLAUNCHER variable
+
+---
+ Base/QTCore/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Base/QTCore/CMakeLists.txt b/Base/QTCore/CMakeLists.txt
+index 6c55787ee..cd62ab757 100644
+--- a/Base/QTCore/CMakeLists.txt
++++ b/Base/QTCore/CMakeLists.txt
+@@ -42,7 +42,9 @@ endif()
+ #
+ # CTKAppLauncherLib
+ #
+-find_package(CTKAppLauncherLib REQUIRED)
++if(Slicer_USE_CTKAPPLAUNCHER)
++  find_package(CTKAppLauncherLib REQUIRED)
++endif()
+ 
+ #
+ # See CMake/SlicerMacroBuildBaseQtLibrary.cmake for details
+-- 
+2.18.1
+

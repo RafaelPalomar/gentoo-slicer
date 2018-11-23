@@ -1,0 +1,34 @@
+From f92ab59c1d6933481ae7481a5d40ec7e62c471c5 Mon Sep 17 00:00:00 2001
+From: = <=>
+Date: Fri, 23 Nov 2018 14:33:54 +0100
+Subject: [PATCH] Fix ITK requirements for Slicer Base QtCore
+
+---
+ Base/QTCore/CMakeLists.txt | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/Base/QTCore/CMakeLists.txt b/Base/QTCore/CMakeLists.txt
+index cd62ab757..24c32a859 100644
+--- a/Base/QTCore/CMakeLists.txt
++++ b/Base/QTCore/CMakeLists.txt
+@@ -26,11 +26,16 @@ if(Slicer_BUILD_CLI_SUPPORT)
+     # Import ITK targets required by CTKImageProcessingITKCore
+     ITKCommon
+     )
+-  find_package(ITK 4.6 COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
++  find_package(ITK REQUIRED)
+   set(ITK_NO_IO_FACTORY_REGISTER_MANAGER 1) # See Libs/ITKFactoryRegistration/CMakeLists.txt
+   include(${ITK_USE_FILE})
+ endif()
+ 
++find_package(ITK REQUIRED)
++set(ITK_NO_IO_FACTORY_REGISTER_MANAGER 1) # See Libs/ITKFactoryRegistration/CMakeLists.txt
++include(${ITK_USE_FILE})
++
++
+ #
+ # qRestAPI
+ #
+-- 
+2.18.1
+

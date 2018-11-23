@@ -1,0 +1,46 @@
+From 3c95731abb38d0b71101757591dfa55894fd4958 Mon Sep 17 00:00:00 2001
+From: = <=>
+Date: Fri, 23 Nov 2018 13:19:37 +0100
+Subject: [PATCH] Fix ITK and VTK dependences for MRML/Core
+
+---
+ Libs/MRML/Core/CMakeLists.txt | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/Libs/MRML/Core/CMakeLists.txt b/Libs/MRML/Core/CMakeLists.txt
+index a05deba9f..5b02bc3a1 100644
+--- a/Libs/MRML/Core/CMakeLists.txt
++++ b/Libs/MRML/Core/CMakeLists.txt
+@@ -32,8 +32,8 @@ mark_as_advanced(MRML_USE_vtkTeem)
+ #
+ # VTK
+ #
+-#find_package(VTK REQUIRED)
+-#include(${VTK_USE_FILE})
++find_package(VTK REQUIRED)
++include(${VTK_USE_FILE})
+ 
+ #
+ # ITK
+@@ -45,7 +45,8 @@ set(${PROJECT_NAME}_ITK_COMPONENTS
+   ITKIOTransformBase
+   ITKTransform
+   )
+-find_package(ITK 4.6 COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
++
++find_package(ITK REQUIRED) # 4.6 COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
+ set(ITK_NO_IO_FACTORY_REGISTER_MANAGER 1) # See Libs/ITKFactoryRegistration/CMakeLists.txt
+ list(APPEND ITK_LIBRARIES ITKFactoryRegistration)
+ list(APPEND ITK_INCLUDE_DIRS ${ITKFactoryRegistration_INCLUDE_DIRS})
+@@ -65,6 +66,8 @@ endif()
+ set(include_dirs
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_BINARY_DIR}
++  ${ITK_INCLUDE_DIRS}
++  ${VTK_INCLUDE_DIRS}
+   ${vtkAddon_INCLUDE_DIRS}
+   ${vtkITK_INCLUDE_DIRS}
+   ${vtkSegmentationCore_INCLUDE_DIRS}
+-- 
+2.18.1
+

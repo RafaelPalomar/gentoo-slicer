@@ -1,0 +1,61 @@
+From ac919ecc0f74f2ea4784b5675a64efc7e82fada8 Mon Sep 17 00:00:00 2001
+From: = <=>
+Date: Fri, 23 Nov 2018 12:41:36 +0100
+Subject: [PATCH] Fixing ITK dependences for vtkITK
+
+---
+ Libs/vtkITK/CMakeLists.txt | 38 +++++++++++++++++++-------------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+
+diff --git a/Libs/vtkITK/CMakeLists.txt b/Libs/vtkITK/CMakeLists.txt
+index 7292e3366..291153eff 100644
+--- a/Libs/vtkITK/CMakeLists.txt
++++ b/Libs/vtkITK/CMakeLists.txt
+@@ -28,25 +28,25 @@ endif()
+ #
+ # ITK
+ #
+-set(${PROJECT_NAME}_ITK_COMPONENTS
+-  ITKAnisotropicSmoothing
+-  ITKCommon
+-  ITKConnectedComponents
+-  ITKDistanceMap
+-  ITKIOGDCM
+-  ITKIOGE
+-  ITKIOImageBase
+-  ITKImageCompose
+-  ITKImageFilterBase
+-  ITKImageFunction
+-  ITKImageGrid
+-  ITKLabelMap
+-  ITKPath
+-  ITKRegionGrowing
+-  ITKThresholding
+-  ITKVTK
+-  )
+-find_package(ITK 4.6 COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
++#set(${PROJECT_NAME}_ITK_COMPONENTS
++#  ITKAnisotropicSmoothing
++#  ITKCommon
++#  ITKConnectedComponents
++#  ITKDistanceMap
++#  ITKIOGDCM
++#  ITKIOGE
++#  ITKIOImageBase
++#  ITKImageCompose
++#  ITKImageFilterBase
++#  ITKImageFunction
++#  ITKImageGrid
++#  ITKLabelMap
++#  ITKPath
++#  ITKRegionGrowing
++#  ITKThresholding
++#  ITKVTK
++#  )
++find_package(ITK)#$COMPONENTS ${${PROJECT_NAME}_ITK_COMPONENTS} REQUIRED)
+ set(ITK_NO_IO_FACTORY_REGISTER_MANAGER 1) # See Libs/ITKFactoryRegistration/CMakeLists.txt
+ list(APPEND ITK_LIBRARIES ITKFactoryRegistration)
+ list(APPEND ITK_INCLUDE_DIRS ${ITKFactoryRegistration_INCLUDE_DIRS})
+-- 
+2.18.1
+
