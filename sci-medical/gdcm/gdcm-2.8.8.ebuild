@@ -11,9 +11,7 @@ DESCRIPTION="Implementation of the DICOM standard"
 # Homepage, not used by Portage directly but handy for developer reference
 HOMEPAGE="http://gdcm.sourceforge.net/"
 
-COMMIT="2e701ed728a4d7fad9637f7d7ad76c654838c24a"
-
-SRC_URI="https://sourceforge.net/code-snapshots/git/g/gd/gdcm/gdcm.git/gdcm-gdcm-2e701ed728a4d7fad9637f7d7ad76c654838c24a.zip -> ${PN}-${PV}.zip"
+SRC_URI="https://sourceforge.net/projects/gdcm/files/gdcm%202.x/GDCM%202.8.8/gdcm-2.8.8.tar.gz/download -> ${PN}-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 
@@ -40,7 +38,7 @@ src_unpack() {
 		unpack ${A}
 	fi
 
-	mv ${WORKDIR}/gdcm-gdcm-${COMMIT} ${WORKDIR}/${PN}-${PV}
+	mv ${WORKDIR}/${PN}-${PV} ${WORKDIR}/${PN}-${PV}
 }
 
 src_prepare() {
