@@ -23,7 +23,9 @@ KEYWORDS="~amd64"
 
 IUSE=""
 
-DEPEND="sci-medical/gdcm"
+DEPEND="sci-medical/gdcm
+		sci-libs/hdf5
+		sci-libs/VTK"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -58,6 +60,7 @@ src_configure(){
 		-DBUILD_TESTING=OFF
 		-DITK_USE_SYSTEM_JPEG=ON
 		-DITK_USE_SYSTEM_GDCM=ON
+		-DITK_USE_SYSTEM_HDF5=ON
 	)
 
 	cmake-utils_src_configure
