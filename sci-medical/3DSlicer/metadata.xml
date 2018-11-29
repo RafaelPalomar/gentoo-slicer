@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>rafael.palomar@rr-research.no</email>
+    <name>Rafael Palomar</name>
+  </maintainer>
+  <use>
+    <flag name="qtloadable">Build Qt loadable modules</flag>
+  </use>
+</pkgmetadata>

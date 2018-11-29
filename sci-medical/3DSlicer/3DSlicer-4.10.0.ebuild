@@ -20,7 +20,7 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-IUSE=""
+IUSE="qtloadable"
 
 DEPEND=" sci-medical/CTK
 		 sci-medical/teem
@@ -29,8 +29,10 @@ DEPEND=" sci-medical/CTK
 		 dev-qt/qtmultimedia
 		 dev-qt/qtxmlpatterns
 		 dev-qt/qtsvg
+		 dev-qt/qtxml
 		 dev-qt/qtwebengine[widgets]
 		 dev-qt/qtwebchannel
+		 qtloadable? ( dev-libs/rapidjson )
 "
 RDEPEND="${DEPEND}"
 
@@ -42,6 +44,7 @@ PATCHES=(
 	${FILESDIR}/${PN}-${PV}-Remove-dependence-of-ctkAppLauncher-from-qSlicerCore.patch
 	${FILESDIR}/${PN}-${PV}-Fix-ITK-requirements-for-Slicer-Base-QtCore.patch
 	${FILESDIR}/${PN}-${PV}-Remove_CPack_from_LastConfigureStep.patch
+	${FILESDIR}/${PN}-${PV}-Fix-inclusion-of-QDomDocument-in-Plots-logic.patch
 )
 
 src_unpack() {
@@ -71,7 +74,7 @@ src_configure(){
 		-DSlicer_REQUIRED_QT_VERSION=5.9.6
 		-DSlicer_BUILD_DICOM_SUPPORT=OFF
 		-DSlicer_BUILD_ITKPython=OFF
-		-DSlicer_BUILD_QTLOADABLEMODULES=OFF
+		-DSlicer_BUILD_QTLOADABLEMODULES=$(usex qtloadable)
 		-DSlicer_BUILD_QT_DESIGNER_PLUGINS=OFF
 		-DSlicer_USE_CTKAPPLAUNCHER=OFF
 		-DSlicer_USE_PYTHONQT=OFF
@@ -82,7 +85,8 @@ src_configure(){
 		-DTeem_DIR=/usr/lib64
 		-DjqPlot_DIR=/usr/share/jqPlot
 		-DSlicer_INSTALL_DEVELOPMENT=ON
+		-DCMAKE_INSTALL_RPATH=/usr/lib64/Slicer-4.10:/usr/lib64/ctk-0.1:/usr/lib64/Slicer-4.10/qt-loadable-modules
+		-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
 	)
-
 	cmake-utils_src_configure
 }
