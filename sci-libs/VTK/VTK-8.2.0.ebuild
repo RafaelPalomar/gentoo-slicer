@@ -73,7 +73,9 @@ src_configure(){
 		-DModule_vtkRenderingQt=ON
 		-DModule_vtkTestingRendering=ON
 		-DModule_vtkViewsContext2D=ON
-		-DModule_vtkFiltersFlowPaths=0N
+		-DModule_vtkFiltersFlowPaths=ON
+		-DModule_vtkGUISupportQtWebkit=ON
+		-DModule_vtkGUISupportQtOpenGL=ON
 		-DVTK_USE_SYSTEM_EIGEN=ON
 	)
 
