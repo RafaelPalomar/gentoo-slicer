@@ -23,6 +23,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${P}-Fix_install_dirs.patch
 	"${FILESDIR}"/${P}-Fix_install_dirs2.patch
+	"${FILESDIR}"/${P}-Remove-creation-of-TeemLibraryDepends_cmake.patch
 	)
 
 
