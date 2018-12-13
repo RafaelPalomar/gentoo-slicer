@@ -1,0 +1,25 @@
+From fc91e50b12f4a2c93641ec0bf47f0fafde88e2e5 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 08:16:50 +0100
+Subject: [PATCH] Fix install directory for Base/Logic headers
+
+---
+ Base/Logic/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Base/Logic/CMakeLists.txt b/Base/Logic/CMakeLists.txt
+index 35da75bb0..357ad432f 100644
+--- a/Base/Logic/CMakeLists.txt
++++ b/Base/Logic/CMakeLists.txt
+@@ -104,7 +104,7 @@ if(NOT ${PROJECT_NAME}_INSTALL_NO_DEVELOPMENT)
+   file(GLOB headers "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
+   install(
+     FILES ${headers} ${CMAKE_CURRENT_BINARY_DIR}/${configure_header_file}
+-    DESTINATION include/${PROJECT_NAME} COMPONENT Development)
++    DESTINATION ${Slicer_INSTALL_INCLUDE_DIR}/${PROJECT_NAME} COMPONENT Development)
+ endif()
+ 
+ # --------------------------------------------------------------------------
+-- 
+2.19.2
+

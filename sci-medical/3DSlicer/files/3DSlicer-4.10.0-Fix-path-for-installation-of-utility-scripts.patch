@@ -1,0 +1,37 @@
+From e19820c8fdca781cf1f44d6674afaa27ca2b811f Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 09:59:53 +0100
+Subject: [PATCH] Fix path for installation of utility scripts
+
+---
+ CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3fb9734ed..1bc79e0de 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -937,17 +937,18 @@ set(QMRML_EXPORT_HEADER_TEMPLATE "${CMAKE_CURRENT_SOURCE_DIR}/Libs/MRML/Widgets/
+ #-----------------------------------------------------------------------------
+ # Configure testing scripts
+ #-----------------------------------------------------------------------------
+-set(files
++set(file_names
+   Utilities/Scripts/computeCodeCoverageLocally.sh
+   Utilities/Scripts/computeCodeCoverageForOneTest.sh
+   Utilities/Scripts/runExperimentalOffScreen.sh
+   Utilities/Scripts/setupSlicerEnvironment.sh
+   )
+-foreach(f ${files})
++foreach(f ${file_names})
+   configure_file(
+     ${CMAKE_CURRENT_SOURCE_DIR}/${f}.in
+     ${CMAKE_CURRENT_BINARY_DIR}/${f}
+     )
++  list(APPEND files ${CMAKE_CURRENT_BINARY_DIR}/${f})
+ endforeach()
+ 
+ #-----------------------------------------------------------------------------
+-- 
+2.19.2
+

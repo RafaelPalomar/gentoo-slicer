@@ -1,0 +1,35 @@
+From 9887585f51059b0b11018853adfd1fb0d6656d98 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 20:03:35 +0100
+Subject: [PATCH] Fix find SlicerBlockFindQtAndCheckVersion.cmake in
+ SlicerConfig.cmake
+
+---
+ CMake/SlicerConfig.cmake.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMake/SlicerConfig.cmake.in b/CMake/SlicerConfig.cmake.in
+index 56508bf47..893f68552 100644
+--- a/CMake/SlicerConfig.cmake.in
++++ b/CMake/SlicerConfig.cmake.in
+@@ -267,7 +267,7 @@ set(RemoteIO_INCLUDE_DIRS "@RemoteIO_INCLUDE_DIRS_CONFIG@"
+ 
+ set(vtkAddon_INCLUDE_DIRS "@vtkAddon_INCLUDE_DIRS_CONFIG@"
+   CACHE INTERNAL "vtkAddon includes" FORCE)
+-  
++
+ set(vtkITK_INCLUDE_DIRS "@vtkITK_INCLUDE_DIRS_CONFIG@"
+   CACHE INTERNAL "vtkITK includes" FORCE)
+ 
+@@ -517,7 +517,7 @@ endforeach()
+ 
+ # This block should be added after VTK and CTK are found.
+ # Indeed, it will check if both VTK_QT_QMAKE_EXECUTABLE and CTK_QT_QMAKE_EXECUTABLE are valid.
+-include(${Slicer_CMAKE_DIR}/SlicerBlockFindQtAndCheckVersion.cmake)
++include(${Slicer_INSTALL_PREFIX}/${Slicer_INSTALL_LIB_DIR}/CMake//SlicerBlockFindQtAndCheckVersion.cmake)
+ 
+ # --------------------------------------------------------------------------
+ if(EXISTS "@Slicer_TARGETS_FILE@" AND NOT TARGET SlicerBaseLogic)
+-- 
+2.19.2
+

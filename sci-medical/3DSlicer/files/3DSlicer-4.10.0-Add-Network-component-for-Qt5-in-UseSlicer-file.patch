@@ -1,0 +1,25 @@
+From e1bae912ff47e9e9236c70294af7e10bde87415a Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 12:05:46 +0100
+Subject: [PATCH] Add Network component to Qt5
+
+---
+ CMake/UseSlicer.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMake/UseSlicer.cmake.in b/CMake/UseSlicer.cmake.in
+index d17434e42..138649116 100644
+--- a/CMake/UseSlicer.cmake.in
++++ b/CMake/UseSlicer.cmake.in
+@@ -143,7 +143,7 @@ endif()
+ # --------------------------------------------------------------------------
+ # Qt
+ # --------------------------------------------------------------------------
+-find_package(Qt5 COMPONENTS Core Widgets Xml REQUIRED)
++find_package(Qt5 COMPONENTS Core Widgets Network Xml REQUIRED)
+ 
+ # --------------------------------------------------------------------------
+ # VTK
+-- 
+2.19.2
+

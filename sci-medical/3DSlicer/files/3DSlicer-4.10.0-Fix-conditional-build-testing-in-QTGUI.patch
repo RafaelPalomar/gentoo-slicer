@@ -1,0 +1,24 @@
+From 41653491c91780eb3e3f5534323e1f09e1bd460d Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 12:09:15 +0100
+Subject: [PATCH] Fix conditional build testing in QTGUI
+
+---
+ Base/QTGUI/CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Base/QTGUI/CMakeLists.txt b/Base/QTGUI/CMakeLists.txt
+index c537aeb90..eadf71d2d 100644
+--- a/Base/QTGUI/CMakeLists.txt
++++ b/Base/QTGUI/CMakeLists.txt
+@@ -348,4 +348,6 @@ add_subdirectory(StylePlugins)
+ #       Extensions. For that reason, the Testing directory is added unconditionally.
+ #       The code specific to Slicer will be excluded directly in either Testing/Python
+ #       or Testing/Cxx.
+-add_subdirectory(Testing)
++if(BUILD_TESTING)
++  add_subdirectory(Testing)
++endif()
+-- 
+2.19.2
+

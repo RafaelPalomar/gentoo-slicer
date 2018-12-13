@@ -1,0 +1,25 @@
+From 8e786cb319ed1055817e478d163187ea68efe5f6 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Mon, 10 Dec 2018 13:20:01 +0100
+Subject: [PATCH] Enable Slicer_INSTALL_DEVELOPMENT option
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 423af151f..985d3cac8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -339,7 +339,7 @@ mark_as_superbuild(Slicer_USE_SimpleITK_SHARED)
+ # Install no development files by default, but allow the user to get
+ # them installed by setting Slicer_INSTALL_DEVELOPMENT to true.
+ #-----------------------------------------------------------------------------
+-#option(Slicer_INSTALL_DEVELOPMENT "Install Slicer extension development files." OFF)
++option(Slicer_INSTALL_DEVELOPMENT "Install Slicer extension development files." OFF)
+ mark_as_advanced(Slicer_INSTALL_DEVELOPMENT)
+ #set(Slicer_INSTALL_DEVELOPMENT OFF)
+ if(NOT Slicer_INSTALL_DEVELOPMENT)
+-- 
+2.19.2
+

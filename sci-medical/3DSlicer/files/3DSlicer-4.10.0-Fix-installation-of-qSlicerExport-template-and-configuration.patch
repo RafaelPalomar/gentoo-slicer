@@ -1,0 +1,48 @@
+From 90b28a49243751d68ff6f8f2e0a064c2bc7724ff Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 5 Dec 2018 09:41:00 +0100
+Subject: [PATCH] Fix qSlicerExport template install and config
+
+---
+ CMake/UseSlicer.cmake.in | 3 +++
+ CMakeLists.txt           | 6 ++++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/CMake/UseSlicer.cmake.in b/CMake/UseSlicer.cmake.in
+index ea895e954..50b4a7f29 100644
+--- a/CMake/UseSlicer.cmake.in
++++ b/CMake/UseSlicer.cmake.in
+@@ -39,6 +39,8 @@
+ # This is can avoided by setting the variable Slicer_VERBOSE_SKIP to TRUE
+ #
+ 
++set(Slicer_EXPORT_HEADER_TEMPLATE ${Slicer_CMAKE_DIR}/qSlicerExport.h.in)
++
+ # --------------------------------------------------------------------------
+ # Helper function(s) and macro(s)
+ # --------------------------------------------------------------------------
+@@ -446,3 +448,4 @@ if(NOT Slicer_DONT_USE_EXTENSION)
+      mark_as_superbuild(Subversion_SVN_EXECUTABLE)
+   endif()
+ endif()
++
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1bc79e0de..2b7ee255a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1153,6 +1153,12 @@ if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+     DESTINATION ${Slicer_INSTALL_LIB_DIR}/CMake COMPONENT Development
+     )
+ 
++  file(GLOB template_file "${CMAKE_CURRENT_SOURCE_DIR}/CMake/qSlicerExport.h.in")
++  install(
++    FILES ${template_file}
++    DESTINATION ${Slicer_INSTALL_LIB_DIR}/CMake COMPONENT Development
++    )
++
+   install(FILES
+     ${Slicer_BINARY_DIR}/UseSlicer.cmake
+     ${Slicer_BINARY_DIR}/SlicerConfig.cmake
+-- 
+2.19.2
+

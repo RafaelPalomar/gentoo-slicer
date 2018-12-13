@@ -1,0 +1,37 @@
+From a9da289036dc4767d76cc7b07e49a6d652427f44 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 10:08:56 +0100
+Subject: [PATCH] Add Slicer Qt libraries for linking
+
+---
+ CMake/SlicerInstallConfig.cmake.in         | 4 ++++
+ CMake/SlicerMacroBuildLoadableModule.cmake | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/CMake/SlicerInstallConfig.cmake.in b/CMake/SlicerInstallConfig.cmake.in
+index 702307b39..65b00bb53 100644
+--- a/CMake/SlicerInstallConfig.cmake.in
++++ b/CMake/SlicerInstallConfig.cmake.in
+@@ -154,3 +154,7 @@ set(CTK_QT_VERSION "@CTK_QT_VERSION@")
+ 
+ # MRML libraries - This variable regroup all related MRML libraries
+ set(MRML_LIBRARIES "@MRML_LIBRARIES@")
++
++# Slicer QT libraries
++set(Slicer_CORE_LIBRARY "@Slicer_CORE_LIBRARY@")
++set(Slicer_GUI_LIBRARY "@Slicer_GUI_LIBRARY@")
+diff --git a/CMake/SlicerMacroBuildLoadableModule.cmake b/CMake/SlicerMacroBuildLoadableModule.cmake
+index 9aba57028..9a709bd9c 100644
+--- a/CMake/SlicerMacroBuildLoadableModule.cmake
++++ b/CMake/SlicerMacroBuildLoadableModule.cmake
+@@ -235,6 +235,7 @@ macro(slicerMacroBuildLoadableModule)
+ 
+   target_link_libraries(${lib_name}
+     ${Slicer_GUI_LIBRARY}
++    ${Slicer_CORE_LIBRARY}
+     ${LOADABLEMODULE_TARGET_LIBRARIES}
+     )
+ 
+-- 
+2.19.2
+

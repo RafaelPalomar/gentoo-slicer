@@ -1,0 +1,24 @@
+From fc9753a23e3228be009ed420a685bc310e2a4acf Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Mon, 10 Dec 2018 17:00:32 +0100
+Subject: [PATCH] Adding VTK link libraries to MacroBuildModuleVTKLibrary
+
+---
+ CMake/SlicerMacroBuildModuleVTKLibrary.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMake/SlicerMacroBuildModuleVTKLibrary.cmake b/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
+index a08ebefbd..4715ad8b2 100644
+--- a/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
++++ b/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
+@@ -130,6 +130,7 @@ macro(SlicerMacroBuildModuleVTKLibrary)
+ 
+   target_link_libraries(${lib_name}
+     ${MODULEVTKLIBRARY_TARGET_LIBRARIES}
++    ${VTK_LIBRARIES}
+     )
+ 
+   # Apply user-defined properties to the library target.
+-- 
+2.19.2
+

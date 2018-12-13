@@ -1,0 +1,30 @@
+From fb17c0e26bdaba296211357b5e5fbecb2966acee Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Mon, 10 Dec 2018 13:54:41 +0100
+Subject: [PATCH] Fix globbing pattern for installation of development files in
+ vtkAddon
+
+---
+ Libs/vtkAddon/CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Libs/vtkAddon/CMakeLists.txt b/Libs/vtkAddon/CMakeLists.txt
+index ad9eb139f..188831b23 100644
+--- a/Libs/vtkAddon/CMakeLists.txt
++++ b/Libs/vtkAddon/CMakeLists.txt
+@@ -39,9 +39,10 @@ if(NOT DEFINED ${PROJECT_NAME}_INSTALL_NO_DEVELOPMENT)
+   set(${PROJECT_NAME}_INSTALL_NO_DEVELOPMENT ON)
+ endif()
+ if(NOT ${PROJECT_NAME}_INSTALL_NO_DEVELOPMENT)
+-  file(GLOB headers "${CMAKE_CURRENT_SOURCE_DIR}/*.(h|txx)")
++  file(GLOB headers "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
++  file(GLOB templates "${CMAKE_CURRENT_SOURCE_DIR}/*.txx")
+   install(
+-    FILES ${headers} ${CMAKE_CURRENT_BINARY_DIR}/${configure_header_file}
++    FILES ${headers} ${templates} ${CMAKE_CURRENT_BINARY_DIR}/${configure_header_file}
+     DESTINATION include/${PROJECT_NAME} COMPONENT Development)
+ endif()
+ 
+-- 
+2.19.2
+

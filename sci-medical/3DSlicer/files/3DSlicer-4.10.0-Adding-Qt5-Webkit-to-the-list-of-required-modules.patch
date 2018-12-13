@@ -1,0 +1,39 @@
+From 3a59c88c42298b570ffa0364f8eb7ca19a4ba6dc Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Thu, 13 Dec 2018 07:13:03 +0100
+Subject: [PATCH] Adding Qt5::WebKit to the list of required modules
+
+---
+ CMakeLists.txt | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3139bf706..492c6f6e0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -559,17 +559,12 @@ else()
+     Svg Sql
+     )
+   find_package(Qt5 COMPONENTS Core QUIET)
+-  if(Qt5_VERSION VERSION_LESS "5.6.0")
+-    list(APPEND Slicer_REQUIRED_QT_MODULES
+-      WebKit
++  list(APPEND Slicer_REQUIRED_QT_MODULES
++    WebKit
++    WebEngine
++    WebEngineWidgets
++    WebChannel
+       )
+-  else()
+-    list(APPEND Slicer_REQUIRED_QT_MODULES
+-      WebEngine
+-      WebEngineWidgets
+-      WebChannel
+-      )
+-  endif()
+   if(Slicer_BUILD_EXTENSIONMANAGER_SUPPORT)
+     list(APPEND Slicer_REQUIRED_QT_MODULES Script)
+   endif()
+-- 
+2.19.2
+

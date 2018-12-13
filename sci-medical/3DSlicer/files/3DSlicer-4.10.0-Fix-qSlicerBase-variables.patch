@@ -1,0 +1,26 @@
+From 57fe3d2900fdac44380727e3aed69d6007c2dbb3 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 10:28:57 +0100
+Subject: [PATCH] Fix qSlicerBase variables
+
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 985d3cac8..3139bf706 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -987,7 +987,8 @@ include(SlicerMacroBuildModuleWidgets)
+ # Slicer Core and GUI library
+ #-----------------------------------------------------------------------------
+ set(Slicer_CORE_LIBRARY qSlicerBaseQTCore)
+-set(Slicer_GUI_LIBRARY qSlicerBaseQTApp)
++set(Slicer_GUI_LIBRARY qSlicerBaseQTGUI)
++set(Slicer_APP_LIBRARY qSlicerBaseQtApp)
+ 
+ #-----------------------------------------------------------------------------
+ # Applications
+-- 
+2.19.2
+

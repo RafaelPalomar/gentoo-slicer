@@ -1,0 +1,42 @@
+From 7acfce8ec910091b491b17617ec57c6556c89691 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 17:49:15 +0100
+Subject: [PATCH] Include VTK in SlicerUse file
+
+---
+ CMake/UseSlicer.cmake.in | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/CMake/UseSlicer.cmake.in b/CMake/UseSlicer.cmake.in
+index 138649116..51092f9b6 100644
+--- a/CMake/UseSlicer.cmake.in
++++ b/CMake/UseSlicer.cmake.in
+@@ -149,6 +149,25 @@ find_package(Qt5 COMPONENTS Core Widgets Network Xml REQUIRED)
+ # VTK
+ # --------------------------------------------------------------------------
+ find_package(VTK REQUIRED)
++vtk_module_config(VTK
++  vtkCommonCore
++  vtkGUISupportQt
++  vtkGUISupportQtOpenGL
++  vtkGUISupportQtSQL
++  vtkIOExport
++  vtkIOGeometry
++  vtkIOInfovis
++  vtkIOPLY
++  vtkImagingMorphological
++  vtkImagingStatistics
++  vtkImagingStencil
++  vtkInteractionImage
++  vtkRenderingFreeTypeFontConfig
++  vtkRenderingQt
++  vtkTestingRendering
++  vtkViewsContext2D
++  )
++
+ include(${VTK_USE_FILE})
+ 
+ # --------------------------------------------------------------------------
+-- 
+2.19.2
+

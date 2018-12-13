@@ -1,0 +1,24 @@
+From 63f47a417b443f2402fa51f3d3e28a71155ca092 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 09:28:32 +0100
+Subject: [PATCH] Fix including of qSlicerBaseQTCore directory
+
+---
+ CMake/SlicerInstallConfig.cmake.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMake/SlicerInstallConfig.cmake.in b/CMake/SlicerInstallConfig.cmake.in
+index f78c34220..702307b39 100644
+--- a/CMake/SlicerInstallConfig.cmake.in
++++ b/CMake/SlicerInstallConfig.cmake.in
+@@ -95,6 +95,7 @@ set(Slicer_Base_INCLUDE_DIRS
+   "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@"
+   "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseCLI"
+   "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/qSlicerBaseQTGUI"
++  "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/qSlicerBaseQTCore"
+   "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseLogic"
+   )
+ 
+-- 
+2.19.2
+

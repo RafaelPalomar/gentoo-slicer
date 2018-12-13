@@ -1,0 +1,35 @@
+From b1788bba774cef24ba8efbdf3c7a887ccdcff203 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 08:15:37 +0100
+Subject: [PATCH] Fix installation path for development files
+
+---
+ CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e793d354f..3fb9734ed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1071,15 +1071,16 @@ get_property(Slicer_QM_OUTPUT_DIRS GLOBAL PROPERTY Slicer_QM_OUTPUT_DIRS)
+ # --------------------------------------------------------------------------
+ # Configure and install headers
+ # --------------------------------------------------------------------------
+-set(files
++set(file_names
+   vtkSlicerConfigure.h
+   vtkSlicerVersionConfigureInternal.h
+   )
+-foreach(f ${files})
++foreach(f ${file_names})
+   configure_file(
+     ${CMAKE_CURRENT_SOURCE_DIR}/CMake/${f}.in
+     ${CMAKE_CURRENT_BINARY_DIR}/${f}
+     )
++  list(APPEND files ${CMAKE_CURRENT_BINARY_DIR}/${f})
+ endforeach()
+ 
+ # Add target configuring 'vtkSlicerVersionConfigure.h' at build time.
+-- 
+2.19.2
+

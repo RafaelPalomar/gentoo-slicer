@@ -1,0 +1,23 @@
+From 74c9abbb6f817cb1aea99e1c8e9bae1e3ffea764 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 11:45:37 +0100
+Subject: [PATCH] Fix-conditional-build-testing-QTCore
+
+---
+ Base/QTCore/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Base/QTCore/CMakeLists.txt b/Base/QTCore/CMakeLists.txt
+index 6c55787ee..9578b0ffa 100644
+--- a/Base/QTCore/CMakeLists.txt
++++ b/Base/QTCore/CMakeLists.txt
+@@ -279,4 +279,6 @@ endif()
+ #       Extensions. For that reason, the Testing directory is added inconditionnally.
+ #       The code specific to Slicer will be excluded directly in either Testing/Python
+ #       or Testing/Cxx.
++if(BUILD_TESTING)
+ add_subdirectory(Testing)
++endif()
+-- 
+2.19.2
+

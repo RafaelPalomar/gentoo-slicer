@@ -1,0 +1,29 @@
+From 802fd53ffd8918371756f471aa60ee558e04b96e Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 5 Dec 2018 10:03:16 +0100
+Subject: [PATCH] Fix installation of vtkSlicerObjectactory.h.in
+
+---
+ CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2b7ee255a..cb902e154 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1159,6 +1159,12 @@ if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+     DESTINATION ${Slicer_INSTALL_LIB_DIR}/CMake COMPONENT Development
+     )
+ 
++  file(GLOB template_file "${CMAKE_CURRENT_SOURCE_DIR}/CMake/vtkSlicerObjectFactory.h.in")
++  install(
++    FILES ${template_file}
++    DESTINATION ${Slicer_INSTALL_LIB_DIR}/CMake COMPONENT Development
++    )
++  
+   install(FILES
+     ${Slicer_BINARY_DIR}/UseSlicer.cmake
+     ${Slicer_BINARY_DIR}/SlicerConfig.cmake
+-- 
+2.19.2
+

@@ -1,0 +1,62 @@
+From 17b4ecfd942c772c325f998fa8503e203d3761df Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 12 Dec 2018 10:02:17 +0100
+Subject: [PATCH] Fix Slicer_INSTALL_DEVELOPMENT variable name
+
+---
+ CMake/SlicerMacroBuildLoadableModule.cmake   | 4 ++--
+ CMake/SlicerMacroBuildModuleQtLibrary.cmake  | 4 ++--
+ CMake/SlicerMacroBuildModuleVTKLibrary.cmake | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/CMake/SlicerMacroBuildLoadableModule.cmake b/CMake/SlicerMacroBuildLoadableModule.cmake
+index c7674ccc9..8aaad4d0e 100644
+--- a/CMake/SlicerMacroBuildLoadableModule.cmake
++++ b/CMake/SlicerMacroBuildLoadableModule.cmake
+@@ -269,9 +269,9 @@ macro(slicerMacroBuildLoadableModule)
+   # --------------------------------------------------------------------------
+   # Install headers
+   # --------------------------------------------------------------------------
+-  if(DEFINED Slicer_DEVELOPMENT_INSTALL)
++  if(DEFINED Slicer_INSTALL_DEVELOPMENT)
+     if(NOT DEFINED ${LOADABLEMODULE_NAME}_DEVELOPMENT_INSTALL)
+-      set(${LOADABLEMODULE_NAME}_DEVELOPMENT_INSTALL ${Slicer_DEVELOPMENT_INSTALL})
++      set(${LOADABLEMODULE_NAME}_DEVELOPMENT_INSTALL ${Slicer_INSTALL_DEVELOPMENT})
+     endif()
+   else()
+     if(NOT DEFINED ${LOADABLEMODULE_NAME}_DEVELOPMENT_INSTALL)
+diff --git a/CMake/SlicerMacroBuildModuleQtLibrary.cmake b/CMake/SlicerMacroBuildModuleQtLibrary.cmake
+index a90d421d7..75486b8ce 100644
+--- a/CMake/SlicerMacroBuildModuleQtLibrary.cmake
++++ b/CMake/SlicerMacroBuildModuleQtLibrary.cmake
+@@ -211,9 +211,9 @@ macro(SlicerMacroBuildModuleQtLibrary)
+   # --------------------------------------------------------------------------
+   # Install headers
+   # --------------------------------------------------------------------------
+-  if(DEFINED Slicer_DEVELOPMENT_INSTALL)
++  if(DEFINED Slicer_INSTALL_DEVELOPMENT)
+     if(NOT DEFINED ${MODULEQTLIBRARY_NAME}_DEVELOPMENT_INSTALL)
+-      set(${MODULEQTLIBRARY_NAME}_DEVELOPMENT_INSTALL ${Slicer_DEVELOPMENT_INSTALL})
++      set(${MODULEQTLIBRARY_NAME}_DEVELOPMENT_INSTALL ${Slicer_INSTALL_DEVELOPMENT})
+     endif()
+   else()
+     if(NOT DEFINED ${MODULEQTLIBRARY_NAME}_DEVELOPMENT_INSTALL)
+diff --git a/CMake/SlicerMacroBuildModuleVTKLibrary.cmake b/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
+index 4715ad8b2..c027891a2 100644
+--- a/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
++++ b/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
+@@ -156,9 +156,9 @@ macro(SlicerMacroBuildModuleVTKLibrary)
+   # --------------------------------------------------------------------------
+   # Install headers
+   # --------------------------------------------------------------------------
+-  if(DEFINED Slicer_DEVELOPMENT_INSTALL)
++  if(DEFINED Slicer_INSTALL_DEVELOPMENT)
+     if(NOT DEFINED ${MODULEVTKLIBRARY_NAME}_DEVELOPMENT_INSTALL)
+-      set(${MODULEVTKLIBRARY_NAME}_DEVELOPMENT_INSTALL ${Slicer_DEVELOPMENT_INSTALL})
++      set(${MODULEVTKLIBRARY_NAME}_DEVELOPMENT_INSTALL ${Slicer_INSTALL_DEVELOPMENT})
+     endif()
+   else()
+     if(NOT DEFINED ${MODULEVTKLIBRARY_NAME}_DEVELOPMENT_INSTALL)
+-- 
+2.19.2
+

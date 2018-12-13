@@ -1,0 +1,21 @@
+From 5fee9d90aeb3d198d623468806557f9332cb3e3a Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 5 Dec 2018 21:11:14 +0100
+Subject: [PATCH] Fix set CTK_QT_VERSION variable
+
+---
+ CMake/SlicerInstallConfig.cmake.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMake/SlicerInstallConfig.cmake.in b/CMake/SlicerInstallConfig.cmake.in
+index 543f5341c..6403b3799 100644
+--- a/CMake/SlicerInstallConfig.cmake.in
++++ b/CMake/SlicerInstallConfig.cmake.in
+@@ -145,3 +145,4 @@ set(CMAKE_MODULE_PATH
+ 
+ 
+ set(Slicer_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@")
++set(CTK_QT_VERSION "@CTK_QT_VERSION@")
+-- 
+2.19.2
+

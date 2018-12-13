@@ -1,0 +1,25 @@
+From 1de12df285f25b8398732260683f247e5f0de2aa Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 12 Dec 2018 10:30:21 +0100
+Subject: [PATCH] Fix destination of loadable modules include dir
+
+---
+ CMake/SlicerMacroBuildModuleVTKLibrary.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMake/SlicerMacroBuildModuleVTKLibrary.cmake b/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
+index c027891a2..068be7304 100644
+--- a/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
++++ b/CMake/SlicerMacroBuildModuleVTKLibrary.cmake
+@@ -171,7 +171,7 @@ macro(SlicerMacroBuildModuleVTKLibrary)
+     install(FILES
+       ${headers}
+       ${dynamicHeaders}
+-      DESTINATION ${Slicer_INSTALL_QTLOADABLEMODULES_INCLUDE_DIR}/${MODULEVTKLIBRARY_NAME} COMPONENT Development
++      DESTINATION ${Slicer_INSTALL_QTLOADABLEMODULES_INCLUDE_DIR} COMPONENT Development
+       )
+   endif()
+ 
+-- 
+2.19.2
+

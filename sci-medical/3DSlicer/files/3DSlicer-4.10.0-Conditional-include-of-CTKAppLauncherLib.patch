@@ -1,0 +1,32 @@
+From 1b4bb14e8ea05e4f71445e8b681169e2fc7880bf Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 15:20:33 +0100
+Subject: [PATCH] Conditional include of CTKAppLauncherLib
+
+---
+ CMake/SlicerGenerateSlicerConfig.cmake | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMake/SlicerGenerateSlicerConfig.cmake b/CMake/SlicerGenerateSlicerConfig.cmake
+index ff40e75ba..a886e3adf 100644
+--- a/CMake/SlicerGenerateSlicerConfig.cmake
++++ b/CMake/SlicerGenerateSlicerConfig.cmake
+@@ -141,11 +141,11 @@ set(Slicer_EP_COMPONENT_VARS_CONFIG
+   "set(Slicer_VTK_COMPONENTS \"${Slicer_VTK_COMPONENTS}\")")
+ 
+ # List all required external project
+-set(Slicer_EXTERNAL_PROJECTS_CONFIG CTK CTKAppLauncherLib ITK CURL Teem VTK RapidJSON)
+-set(Slicer_EXTERNAL_PROJECTS_NO_USEFILE_CONFIG CURL CTKAppLauncherLib RapidJSON)
++set(Slicer_EXTERNAL_PROJECTS_CONFIG CTK ITK CURL Teem VTK RapidJSON)
++set(Slicer_EXTERNAL_PROJECTS_NO_USEFILE_CONFIG CURL RapidJSON)
+ if(Slicer_USE_CTKAPPLAUNCHER)
+-  list(APPEND Slicer_EXTERNAL_PROJECTS_CONFIG CTKAppLauncher)
+-  list(APPEND Slicer_EXTERNAL_PROJECTS_NO_USEFILE_CONFIG CTKAppLauncher)
++  list(APPEND Slicer_EXTERNAL_PROJECTS_CONFIG CTKAppLauncherLib CTKAppLauncher)
++  list(APPEND Slicer_EXTERNAL_PROJECTS_NO_USEFILE_CONFIG CTKAppLauncherLib CTKAppLauncher)
+ endif()
+ if(Slicer_USE_QtTesting)
+   list(APPEND Slicer_EXTERNAL_PROJECTS_CONFIG QtTesting)
+-- 
+2.19.2
+

@@ -43,8 +43,49 @@ PATCHES=(
 	${FILESDIR}/${PN}-${PV}-Fix-ITK-and-VTK-dependences-for-MRML-Core.patch
 	${FILESDIR}/${PN}-${PV}-Remove-dependence-of-ctkAppLauncher-from-qSlicerCore.patch
 	${FILESDIR}/${PN}-${PV}-Fix-ITK-requirements-for-Slicer-Base-QtCore.patch
-	${FILESDIR}/${PN}-${PV}-Remove_CPack_from_LastConfigureStep.patch
+#	${FILESDIR}/${PN}-${PV}-Remove_CPack_from_LastConfigureStep.patch
 	${FILESDIR}/${PN}-${PV}-Fix-inclusion-of-QDomDocument-in-Plots-logic.patch
+	${FILESDIR}/${PN}-${PV}-Enable-install-of-development-files.patch
+	${FILESDIR}/${PN}-${PV}-Fix-installation-path-for-development-files.patch
+	${FILESDIR}/${PN}-${PV}-Fix-path-for-installation-of-utility-scripts.patch
+	${FILESDIR}/${PN}-${PV}-Fix-conditional-build-testing-QTCore.patch
+	${FILESDIR}/${PN}-${PV}-Fix-conditional-build-testing-in-QTGUI.patch
+	${FILESDIR}/${PN}-${PV}-Conditional-include-of-CTKAppLauncherLib.patch
+	${FILESDIR}/${PN}-${PV}-Fix-find-SlicerBlockFindQtAndCheckVersion_cmake-on-SlicerConfig_cmake.patch
+	${FILESDIR}/${PN}-${PV}-Fix-install-configuration.patch
+	${FILESDIR}/${PN}-${PV}-Fix-installation-of-template-files.patch
+	${FILESDIR}/${PN}-${PV}-Fix-template-directory-configuration.patch
+	${FILESDIR}/${PN}-${PV}-Fix-library-destination-for-install-of-module-libraries.patch
+	${FILESDIR}/${PN}-${PV}-Fix-development-paths.patch
+	${FILESDIR}/${PN}-${PV}-Add-CTK_QT_VERSION-variable-to-SlicerConfig.patch
+	${FILESDIR}/${PN}-${PV}-Fix-include-qt5-in-SlicerUse-template-file.patch
+	${FILESDIR}/${PN}-${PV}-Set-development-configuration-variables.patch
+	${FILESDIR}/${PN}-${PV}-Include-find-package-forITK-and-vtk-in-UseSlicer-template.patch
+	${FILESDIR}/${PN}-${PV}-Enable-Slicer-INSTALL-DEVELOPMENT-option.patch
+	${FILESDIR}/${PN}-${PV}-Fix-gobbling-pattern-for-installation-of-development-files-in-vtkAddon.patch
+	${FILESDIR}/${PN}-${PV}-Adding-MRML-libraries-to-SlicerConfig-template.patch
+	${FILESDIR}/${PN}-${PV}-Set-3DSlicer-link-directories.patch
+	${FILESDIR}/${PN}-${PV}-Adding-VTK-link-libraries-to-MacroBuildModuleVTKLibrary.patch
+	${FILESDIR}/${PN}-${PV}-Fix-set-of-install-development-flag-on-Logic.patch
+	${FILESDIR}/${PN}-${PV}-Fix-install-path-for-Base-Logic-headers.patch
+	${FILESDIR}/${PN}-${PV}-Fix-include-path-for-qSlicerBaseQTGUI.patch
+	${FILESDIR}/${PN}-${PV}-Include-CTK-in-SlicerUse-file.patch
+	${FILESDIR}/${PN}-${PV}-Fix-including-of-qSlicerBaseQTCore-directory.patch
+	${FILESDIR}/${PN}-${PV}-Add-Slicer-qt-core-libraries-for-linking.patch
+	${FILESDIR}/${PN}-${PV}-Fix-qSlicerBase-variables.patch
+	${FILESDIR}/${PN}-${PV}-Include-CTK-libraries-for-linking-Loadable-Modules.patch
+	${FILESDIR}/${PN}-${PV}-Add-Xml-component-for-Qt5-in-UseSlicer-file.patch
+	${FILESDIR}/${PN}-${PV}-Add-Network-component-for-Qt5-in-UseSlicer-file.patch
+	${FILESDIR}/${PN}-${PV}-Add-qMRMLWidgets-include-directory.patch
+	${FILESDIR}/${PN}-${PV}-Include-Qt-dirs-in-macro-for-building-logic.patch
+	${FILESDIR}/${PN}-${PV}-Include-VTK-in-slicer-build-logic-macro.patch
+	${FILESDIR}/${PN}-${PV}-Include-VTK-modules-in-SlicerUse.patch
+	${FILESDIR}/${PN}-${PV}-Fix-Slicer_INSTALL_DEVELOPMENT-variable-name.patch
+	${FILESDIR}/${PN}-${PV}-Fix-destination-of-loadable-modules-include-files.patch
+	${FILESDIR}/${PN}-${PV}-Add-qtloadable-modules-includes-dirs-in-BuildModuleLogic.patch
+	${FILESDIR}/${PN}-${PV}-Change-install-paths-for-development-files.patch
+	${FILESDIR}/${PN}-${PV}-Adding-Qt5-Webkit-to-the-list-of-required-modules.patch
+	${FILESDIR}/${PN}-${PV}-Add-link-libraries-build-module-logic-macro.patch
 )
 
 src_unpack() {
@@ -87,6 +128,9 @@ src_configure(){
 		-DSlicer_INSTALL_DEVELOPMENT=ON
 		-DCMAKE_INSTALL_RPATH=/usr/lib64/Slicer-4.10:/usr/lib64/ctk-0.1:/usr/lib64/Slicer-4.10/qt-loadable-modules
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
+		-DSlicer_USE_SYSTEM_LibArchive=ON
+#		-DSlicer_SKIP_SlicerBlockAdditionalLauncherSettings=ON
+#		-DSlicer_DONT_USE_EXTENSION=ON
 	)
 	cmake-utils_src_configure
 }

@@ -1,0 +1,30 @@
+From c0a2f43c1d65b28f7632adc47b20b11bba3fb18b Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 5 Dec 2018 10:47:46 +0100
+Subject: [PATCH] Fix installation of template files
+
+---
+ CMakeLists.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1bc79e0de..423af151f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1153,6 +1153,13 @@ if(NOT Slicer_INSTALL_NO_DEVELOPMENT)
+     DESTINATION ${Slicer_INSTALL_LIB_DIR}/CMake COMPONENT Development
+     )
+ 
++  install(FILES
++    "${CMAKE_CURRENT_SOURCE_DIR}/CMake/qSlicerExport.h.in"
++    "${CMAKE_CURRENT_SOURCE_DIR}/CMake/vtkSlicerObjectFactory.h.in"
++    "${CMAKE_CURRENT_SOURCE_DIR}/CMake/vtkSlicerObjectFactory.cxx.in"
++    DESTINATION ${Slicer_INSTALL_LIB_DIR}/CMake COMPONENT Development
++    )
++
+   install(FILES
+     ${Slicer_BINARY_DIR}/UseSlicer.cmake
+     ${Slicer_BINARY_DIR}/SlicerConfig.cmake
+-- 
+2.19.2
+

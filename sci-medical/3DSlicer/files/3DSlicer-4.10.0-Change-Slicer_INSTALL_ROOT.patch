@@ -1,0 +1,25 @@
+From 12fea9a2a46bce0be35bbf71d2bd9c1e5e6e7ebe Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Wed, 12 Dec 2018 11:02:32 +0100
+Subject: [PATCH] Change Slicer_INSTALL_ROOT
+
+---
+ CMake/SlicerDirectories.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMake/SlicerDirectories.cmake b/CMake/SlicerDirectories.cmake
+index 17a8e5461..acd9a994a 100644
+--- a/CMake/SlicerDirectories.cmake
++++ b/CMake/SlicerDirectories.cmake
+@@ -64,7 +64,7 @@ set(Slicer_ITKFACTORIES_DIR "${Slicer_LIB_DIR}/ITKFactories")
+ set(Slicer_QM_DIR "${Slicer_BIN_DIR}/Translations")
+ 
+ # for install tree
+-set(Slicer_INSTALL_ROOT "./")
++set(Slicer_INSTALL_ROOT "${CMAKE_INSTALL_PREFIX}")
+ set(Slicer_BUNDLE_LOCATION "${Slicer_MAIN_PROJECT_APPLICATION_NAME}.app/Contents")
+ if(APPLE)
+   set(Slicer_INSTALL_ROOT "${Slicer_BUNDLE_LOCATION}/") # Set to create Bundle
+-- 
+2.19.2
+

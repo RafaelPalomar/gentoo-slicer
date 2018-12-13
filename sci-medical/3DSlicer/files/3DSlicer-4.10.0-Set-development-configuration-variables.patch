@@ -1,0 +1,124 @@
+From 884bbe1f113e49b2b88f6dd6a5a86f9fa89477c9 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Mon, 10 Dec 2018 10:46:08 +0100
+Subject: [PATCH] Fix include/link paths for configuration file
+
+---
+ CMake/SlicerInstallConfig.cmake.in | 80 ++++++++++++++++--------------
+ 1 file changed, 42 insertions(+), 38 deletions(-)
+
+diff --git a/CMake/SlicerInstallConfig.cmake.in b/CMake/SlicerInstallConfig.cmake.in
+index 6403b3799..096388087 100644
+--- a/CMake/SlicerInstallConfig.cmake.in
++++ b/CMake/SlicerInstallConfig.cmake.in
+@@ -38,59 +38,64 @@ get_filename_component(Slicer_CONFIG_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+ set(Slicer_HOME "${Slicer_CONFIG_DIR}/../..")
+ get_filename_component(Slicer_HOME ${Slicer_HOME} ABSOLUTE)
+ 
++# The Slicer install path
++set(Slicer_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@")
++
+ # The CMake macros dir.
+-set(Slicer_CMAKE_DIR "${Slicer_HOME}/@Slicer_INSTALL_LIB_DIR@/CMake")
++set(Slicer_CMAKE_DIR "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_LIB_DIR@/CMake")
+ 
+ # Slicer Libs library directories.
+ set(Slicer_Libs_LIBRARY_DIRS
+-  "${Slicer_HOME}/lib/FreeSurfer"
+-  "${Slicer_HOME}/lib/IGT"
+-  "${Slicer_HOME}/lib/ITKCommandIO"
+-  "${Slicer_HOME}/lib/LoadableModule"
+-  "${Slicer_HOME}/lib/MGHImageIO"
+-  "${Slicer_HOME}/lib/MRML"
+-  "${Slicer_HOME}/lib/MRMLIDImageIO"
+-  "${Slicer_HOME}/lib/ModuleDescriptionParser"
+-  "${Slicer_HOME}/lib/Qdec"
+-  "${Slicer_HOME}/lib/tclap"
+-  "${Slicer_HOME}/lib/vtkAddon"
+-  "${Slicer_HOME}/lib/vtkITK"
+-  "${Slicer_HOME}/lib/vtkSegmentationCore"
+-  "${Slicer_HOME}/lib/vtkTeem"
+-  "${Slicer_HOME}/lib/TclTk/lib"
+-  "${Slicer_HOME}/lib/TclTk/lib/itcl@INCR_TCL_VERSION_DOT@"
+-  "${Slicer_HOME}/lib/TclTk/lib/itk@INCR_TCL_VERSION_DOT@"
++  "${Slicer_INSTALL_PREFIX}/lib/FreeSurfer"
++  "${Slicer_INSTALL_PREFIX}/lib/IGT"
++  "${Slicer_INSTALL_PREFIX}/lib/ITKCommandIO"
++  "${Slicer_INSTALL_PREFIX}/lib/LoadableModule"
++  "${Slicer_INSTALL_PREFIX}/lib/MGHImageIO"
++  "${Slicer_INSTALL_PREFIX}/lib/MRML"
++  "${Slicer_INSTALL_PREFIX}/lib/MRMLIDImageIO"
++  "${Slicer_INSTALL_PREFIX}/lib/ModuleDescriptionParser"
++  "${Slicer_INSTALL_PREFIX}/lib/Qdec"
++  "${Slicer_INSTALL_PREFIX}/lib/tclap"
++  "${Slicer_INSTALL_PREFIX}/lib/vtkAddon"
++  "${Slicer_INSTALL_PREFIX}/lib/vtkITK"
++  "${Slicer_INSTALL_PREFIX}/lib/vtkSegmentationCore"
++  "${Slicer_INSTALL_PREFIX}/lib/vtkTeem"
++  "${Slicer_INSTALL_PREFIX}/lib/TclTk/lib"
++  "${Slicer_INSTALL_PREFIX}/lib/TclTk/lib/itcl@INCR_TCL_VERSION_DOT@"
++  "${Slicer_INSTALL_PREFIX}/lib/TclTk/lib/itk@INCR_TCL_VERSION_DOT@"
+   )
+ 
+ # Slicer Libs include file directories.
+ set(Slicer_Libs_INCLUDE_DIRS
+-  "${Slicer_HOME}/include/FreeSurfer"
+-  "${Slicer_HOME}/include/IGT"
+-  "${Slicer_HOME}/include/ITKCommandIO"
+-  "${Slicer_HOME}/include/LoadableModule"
+-  "${Slicer_HOME}/include/MGHImageIO"
+-  "${Slicer_HOME}/include/MRML"
+-  "${Slicer_HOME}/include/MRMLIDImageIO"
+-  "${Slicer_HOME}/include/ModuleDescriptionParser"
+-  "${Slicer_HOME}/include/Qdec"
+-  "${Slicer_HOME}/include/tclap"
+-  "${Slicer_HOME}/include/vtkAddon"
+-  "${Slicer_HOME}/include/vtkITK"
+-  "${Slicer_HOME}/include/vtkSegmentationCore"
+-  "${Slicer_HOME}/include/vtkTeem"
++  "${Slicer_INSTALL_PREFIX}/include/FreeSurfer"
++  "${Slicer_INSTALL_PREFIX}/include/IGT"
++  "${Slicer_INSTALL_PREFIX}/include/ITKCommandIO"
++  "${Slicer_INSTALL_PREFIX}/include/LoadableModule"
++  "${Slicer_INSTALL_PREFIX}/include/MGHImageIO"
++  "${Slicer_INSTALL_PREFIX}/include/MRMLCore"
++  "${Slicer_INSTALL_PREFIX}/include/MRMLDisplayableManager"
++  "${Slicer_INSTALL_PREFIX}/include/MRMLLogic"
++  "${Slicer_INSTALL_PREFIX}/include/MRMLIDImageIO"
++  "${Slicer_INSTALL_PREFIX}/include/ModuleDescriptionParser"
++  "${Slicer_INSTALL_PREFIX}/include/Qdec"
++  "${Slicer_INSTALL_PREFIX}/include/tclap"
++  "${Slicer_INSTALL_PREFIX}/include/vtkAddon"
++  "${Slicer_INSTALL_PREFIX}/include/vtkITK"
++  "${Slicer_INSTALL_PREFIX}/include/vtkSegmentationCore"
++  "${Slicer_INSTALL_PREFIX}/include/vtkTeem"
+   )
+ 
+ # Slicer Base library directories.
+ set(Slicer_Base_LIBRARY_DIRS
+-  "${Slicer_HOME}/@Slicer_INSTALL_LIB_DIR@"
++  "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_LIB_DIR@"
+   )
+ 
+ # Slicer Base include file directories.
+ set(Slicer_Base_INCLUDE_DIRS
+-  "${Slicer_HOME}/@Slicer_INSTALL_INCLUDE_DIR@"
+-  "${Slicer_HOME}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseCLI"
+-  "${Slicer_HOME}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseGUI"
+-  "${Slicer_HOME}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseLogic"
++  "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@"
++  "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseCLI"
++  "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseGUI"
++  "${Slicer_INSTALL_PREFIX}/@Slicer_INSTALL_INCLUDE_DIR@/SlicerBaseLogic"
+   )
+ 
+ # The location of the UseSlicer.cmake file.
+@@ -144,5 +149,4 @@ set(CMAKE_MODULE_PATH
+   ${CTK_CMAKE_UTILITIES_DIR})
+ 
+ 
+-set(Slicer_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@")
+ set(CTK_QT_VERSION "@CTK_QT_VERSION@")
+-- 
+2.19.2
+

@@ -1,0 +1,28 @@
+From ab9451dd9fcd6ef327e673a759fe03d4dbb3c4cb Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 7 Dec 2018 12:19:29 +0100
+Subject: [PATCH] Fix include qt5 in SlicerUse template file
+
+---
+ CMake/UseSlicer.cmake.in | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMake/UseSlicer.cmake.in b/CMake/UseSlicer.cmake.in
+index 8e738bcda..936932ee5 100644
+--- a/CMake/UseSlicer.cmake.in
++++ b/CMake/UseSlicer.cmake.in
+@@ -140,6 +140,11 @@ else()
+   _slicer_skip_message("Slicer_SKIP_EXTERNAL_PROJECTS_USEFILE")
+ endif()
+ 
++# --------------------------------------------------------------------------
++# Qt
++# --------------------------------------------------------------------------
++find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
++
+ # Set '<PROJECTNAME>_DIR' variable(s) so that find_package(<PROJECTNAME>) works as expected.
+ # NA
+ 
+-- 
+2.19.2
+

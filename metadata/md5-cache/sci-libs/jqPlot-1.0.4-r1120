@@ -1,0 +1,9 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Pure JavaScript plotting plugin for jQuery
+EAPI=6
+HOMEPAGE=http://www.jqplot.com
+KEYWORDS=~amd64 ~arm ~x86 ~x64-macos
+LICENSE=MIT
+SLOT=0
+SRC_URI=http://slicer.kitware.com/midas3/download?items=15065&dummy=jquery.jqplot.1.0.4r1120.tar.gz -> jqPlot-1.0.4.tar.gz
+_md5_=a67b88dc75b543cabbe15d6386fa28b2

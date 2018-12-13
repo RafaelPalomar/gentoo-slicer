@@ -1,0 +1,28 @@
+From f680d73bc46b50e7411028ded0189ae12bd5fa4e Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Thu, 13 Dec 2018 12:41:00 +0100
+Subject: [PATCH] Add link libraries to build modules logic macro
+
+---
+ CMake/SlicerMacroBuildModuleLogic.cmake | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMake/SlicerMacroBuildModuleLogic.cmake b/CMake/SlicerMacroBuildModuleLogic.cmake
+index 69ae08471..610862a0b 100644
+--- a/CMake/SlicerMacroBuildModuleLogic.cmake
++++ b/CMake/SlicerMacroBuildModuleLogic.cmake
+@@ -75,6 +75,11 @@ macro(SlicerMacroBuildModuleLogic)
+       )
+   else()
+     list(APPEND MODULELOGIC_TARGET_LIBRARIES
++      qSlicerBaseQTGUI
++      qSlicerBaseQTApp
++      qMRMLWidgets
++      CTKWidgets
++      CTKVisualizationVTKWidgets
+       SlicerBaseLogic
+       MRMLDisplayableManager
+       )
+-- 
+2.19.2
+

@@ -1,0 +1,27 @@
+From 4de6fdf9d34c65076d04c073c4ff4be96b19a0f1 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Mon, 10 Dec 2018 16:21:52 +0100
+Subject: [PATCH] Set Slicer link directories
+
+---
+ CMake/UseSlicer.cmake.in | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMake/UseSlicer.cmake.in b/CMake/UseSlicer.cmake.in
+index 1b837a3a4..892dd721d 100644
+--- a/CMake/UseSlicer.cmake.in
++++ b/CMake/UseSlicer.cmake.in
+@@ -239,6 +239,10 @@ if(NOT DEFINED BUILD_SHARED_LIBS)
+   set(BUILD_SHARED_LIBS ${Slicer_BUILD_SHARED})
+ endif()
+ 
++#-----------------------------------------------------------------------------
++# Set Slicer link directory
++#------------------------------------------------------------------------------
++link_directories(${Slicer_Base_LIBRARY_DIRS})
+ #-----------------------------------------------------------------------------
+ # Include directories - See SlicerMacroBuildLoadableModule
+ #------------------------------------------------------------------------------
+-- 
+2.19.2
+

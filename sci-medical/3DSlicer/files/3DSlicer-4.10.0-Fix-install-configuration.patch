@@ -1,0 +1,42 @@
+From e01cfafe04dc9f96e872c887b96209b39823e357 Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 4 Dec 2018 13:48:22 +0100
+Subject: [PATCH] Fix installation config
+
+---
+ CMake/SlicerGenerateSlicerConfig.cmake |  2 +-
+ CMake/SlicerInstallConfig.cmake.in     | 10 ++++++++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/CMake/SlicerGenerateSlicerConfig.cmake b/CMake/SlicerGenerateSlicerConfig.cmake
+index a886e3adf..79570e96a 100644
+--- a/CMake/SlicerGenerateSlicerConfig.cmake
++++ b/CMake/SlicerGenerateSlicerConfig.cmake
+@@ -186,5 +186,5 @@ set(Slicer_TARGETS_FILE "${Slicer_BINARY_DIR}/SlicerTargets.cmake")
+ 
+ # Configure SlicerConfig.cmake for the build tree.
+ configure_file(
+-  ${Slicer_SOURCE_DIR}/CMake/SlicerConfig.cmake.in
++  ${Slicer_SOURCE_DIR}/CMake/SlicerInstallConfig.cmake.in
+   ${Slicer_BINARY_DIR}/SlicerConfig.cmake @ONLY)
+diff --git a/CMake/SlicerInstallConfig.cmake.in b/CMake/SlicerInstallConfig.cmake.in
+index 5f1c679f2..e29f391b0 100644
+--- a/CMake/SlicerInstallConfig.cmake.in
++++ b/CMake/SlicerInstallConfig.cmake.in
+@@ -133,3 +133,13 @@ get_filename_component(PYTHON_LIB_FILE "${PYTHON_LIBRARY}" NAME)
+ set(PYTHON_LIBRARIES "${Slicer_HOME}/lib/Python/lib/${PYTHON_LIB_FILE}")
+ get_filename_component(PYTHON_INCLUDE_DIR "${PYTHON_INCLUDE_PATH}" NAME)
+ set(PYTHON_INCLUDE_PATH "${Slicer_HOME}/lib/Python/include/${PYTHON_INCLUDE_DIR}")
++
++set(CTK_CMAKE_DIR @CTK_CMAKE_DIR@)
++
++#Update CMake module path
++set(CMAKE_MODULE_PATH
++  ${Slicer_CMAKE_DIR}
++  ${CTK_CMAKE_DIR}
++  ${CMAKE_MODULE_PATH}
++  ${CTK_CMAKE_UTILITIES_DIR})
++
+-- 
+2.19.2
+

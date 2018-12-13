@@ -1,0 +1,24 @@
+From 430e5b8084a1f6008f23c7165a62a9c5fc60c0ec Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Tue, 11 Dec 2018 12:26:29 +0100
+Subject: [PATCH] Add qMRMLWidgets include directory
+
+---
+ CMake/SlicerInstallConfig.cmake.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMake/SlicerInstallConfig.cmake.in b/CMake/SlicerInstallConfig.cmake.in
+index 65b00bb53..1cfcf62eb 100644
+--- a/CMake/SlicerInstallConfig.cmake.in
++++ b/CMake/SlicerInstallConfig.cmake.in
+@@ -75,6 +75,7 @@ set(Slicer_Libs_INCLUDE_DIRS
+   "${Slicer_INSTALL_PREFIX}/include/MRMLCore"
+   "${Slicer_INSTALL_PREFIX}/include/MRMLDisplayableManager"
+   "${Slicer_INSTALL_PREFIX}/include/MRMLLogic"
++  "${Slicer_INSTALL_PREFIX}/include/qMRMLWidgets"
+   "${Slicer_INSTALL_PREFIX}/include/MRMLIDImageIO"
+   "${Slicer_INSTALL_PREFIX}/include/ModuleDescriptionParser"
+   "${Slicer_INSTALL_PREFIX}/include/Qdec"
+-- 
+2.19.2
+

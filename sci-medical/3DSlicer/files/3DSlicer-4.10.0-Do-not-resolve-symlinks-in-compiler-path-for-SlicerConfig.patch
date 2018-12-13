@@ -1,0 +1,27 @@
+From 79bd65dd589aff84a0c9edb2ca24d0d2b928967d Mon Sep 17 00:00:00 2001
+From: Rafael Palomar <rafael.palomar@rr-research.no>
+Date: Fri, 30 Nov 2018 12:32:11 +0100
+Subject: [PATCH] Do not resolve symlinks in compiler path for SlicerConfig
+
+---
+ CMake/SlicerConfig.cmake.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMake/SlicerConfig.cmake.in b/CMake/SlicerConfig.cmake.in
+index 56508bf47..a495801fb 100644
+--- a/CMake/SlicerConfig.cmake.in
++++ b/CMake/SlicerConfig.cmake.in
+@@ -435,8 +435,8 @@ set(Slicer_CMAKE_C_FLAGS      "@Slicer_CMAKE_C_FLAGS_CONFIG@")
+ macro(slicer_config_set_compiler_ep var value)
+   if(NOT "${value}" STREQUAL "")
+     if(DEFINED ${var})
+-      get_filename_component(var_realpath "${${var}}" REALPATH)
+-      get_filename_component(value_realpath ${value} REALPATH)
++      get_filename_component(var_realpath "${${var}}" ABSOLUTE)
++      get_filename_component(value_realpath ${value} ABSOLUTE)
+       if(NOT MSVC AND NOT ${var_realpath} STREQUAL ${value_realpath})
+         message(FATAL_ERROR "Variable ${var} defined prior calling 'find_package(Slicer)' does NOT "
+                             "match value used to configure Slicer. It probably means that a different "
+-- 
+2.19.2
+
