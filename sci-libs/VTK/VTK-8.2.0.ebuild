@@ -26,6 +26,8 @@ IUSE=""
 DEPEND=">dev-cpp/eigen-3.3"
 RDEPEND="${DEPEND}"
 
+IUSE="test"
+
 PATCHES=(
 	)
 
@@ -48,7 +50,7 @@ src_configure(){
 
 	mycmakeargs+=(
 		-DBUILD_EXAMPLES=OFF
-		-DBUILD_TESTING=OFF
+		-DBUILD_TESTING=$(usex test)
 		-DBUILD_SHARED_LIBS=ON
 		-DVTK_BUILD_ALL_MODULES=OFF
 		-DVTK_ENABLE_KITS=ON
@@ -80,4 +82,9 @@ src_configure(){
 	)
 
 	cmake-utils_src_configure
+}
+
+src_test()
+{
+	ctest
 }
